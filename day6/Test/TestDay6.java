@@ -1,74 +1,49 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Scanner;
+
 public class TestDay6 {
 
     @Test
-    public void TestPacketStartIsDetectedReturnsTrue() {
-        boolean got = day6.isStartOf("abcd".toCharArray(), 0, day6.packetStartLength);
-        Assertions.assertTrue(got);
-
-        got = day6.isStartOf("bvwbjplbgvbhsrlpgdmjqwftvncz".toCharArray(), 1, day6.packetStartLength);
-        Assertions.assertTrue(got);
-    }
-
-    @Test
-    public void TestStringIsNotPacketStartReturnsFalse() {
-        boolean got = day6.isStartOf("abca".toCharArray(), 7, day6.packetStartLength);
-        Assertions.assertFalse(got);
-
-        got = day6.isStartOf("bvwbjplbgvbhsrlpgdmjqwftvncz".toCharArray(), 7, day6.packetStartLength);
-        Assertions.assertFalse(got);
-    }
-
-    @Test
     public void TestExample1ReturnsRightIndexOfPacketStart() {
-        int got = day6.getStartOfPacket("bvwbjplbgvbhsrlpgdmjqwftvncz".toCharArray());
+        Scanner scanner = new Scanner("bvwbjplbgvbhsrlpgdmjqwftvncz");
+        int got = day6.getIndexOfSequence(scanner, day6.packetStartLength);
         Assertions.assertEquals(got, 5);
 
-        got = day6.getStartOfPacket("nppdvjthqldpwncqszvftbrmjlhg".toCharArray());
+        scanner = new Scanner("nppdvjthqldpwncqszvftbrmjlhg");
+        got = day6.getIndexOfSequence(scanner, day6.packetStartLength);
         Assertions.assertEquals(got, 6);
 
-        got = day6.getStartOfPacket("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg".toCharArray());
+        scanner = new Scanner("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg");
+        got = day6.getIndexOfSequence(scanner,day6.packetStartLength);
         Assertions.assertEquals(got, 10);
 
-        got = day6.getStartOfPacket("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw".toCharArray());
+        scanner = new Scanner("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw");
+        got = day6.getIndexOfSequence(scanner,day6.packetStartLength);
         Assertions.assertEquals(got, 11);
     }
 
     @Test
-    public void TestMessageStartReturnTrue() {
-        boolean got = day6.isStartOf("mjqjpqmgbljsphdztnvjfqwrcgsmlb".toCharArray(), 5, day6.messageStartLength);
-        Assertions.assertTrue(got);
-
-        got = day6.isStartOf("bvwbjplbgvbhsrlpgdmjqwftvncz".toCharArray(), 9, day6.messageStartLength);
-        Assertions.assertTrue(got);
-
-        got = day6.isStartOf("nppdvjthqldpwncqszvftbrmjlhg".toCharArray(), 9, day6.messageStartLength);
-        Assertions.assertTrue(got);
-
-        got = day6.isStartOf("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg".toCharArray(), 15, day6.messageStartLength);
-        Assertions.assertTrue(got);
-
-        got = day6.isStartOf("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw".toCharArray(), 12, day6.messageStartLength);
-        Assertions.assertTrue(got);
-    }
-
-    @Test
     public void TestExampleReturnCorrectMessageStartIndex() {
-        int got = day6.getStartOfMessage("mjqjpqmgbljsphdztnvjfqwrcgsmlb".toCharArray());
+        Scanner scanner = new Scanner("mjqjpqmgbljsphdztnvjfqwrcgsmlb");
+        int got = day6.getIndexOfSequence(scanner,day6.messageStartLength);
         Assertions.assertEquals(got, 19);
 
-        got = day6.getStartOfMessage("bvwbjplbgvbhsrlpgdmjqwftvncz".toCharArray());
+        scanner = new Scanner("bvwbjplbgvbhsrlpgdmjqwftvncz");
+        got = day6.getIndexOfSequence(scanner,day6.messageStartLength);
         Assertions.assertEquals(got, 23);
 
-        got = day6.getStartOfMessage("nppdvjthqldpwncqszvftbrmjlhg".toCharArray());
+        scanner = new Scanner("nppdvjthqldpwncqszvftbrmjlhg");
+        got = day6.getIndexOfSequence(scanner,day6.messageStartLength);
         Assertions.assertEquals(got, 23);
 
-        got = day6.getStartOfMessage("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg".toCharArray());
+        scanner = new Scanner("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg");
+        got = day6.getIndexOfSequence(scanner,day6.messageStartLength);
         Assertions.assertEquals(got, 29);
 
-        got = day6.getStartOfMessage("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw".toCharArray());
+        scanner = new Scanner("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw");
+        got = day6.getIndexOfSequence(scanner,day6.messageStartLength);
         Assertions.assertEquals(got, 26);
     }
 }
