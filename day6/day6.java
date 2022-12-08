@@ -20,21 +20,21 @@ public class day6 {
         scanner.close();
     }
 
-    public static int getIndexOfSequence(Scanner sc, int size){
+    public static int getIndexOfSequence(Scanner sc, int size) {
         sc.useDelimiter("");
         ArrayList<Character> current = new ArrayList<>();
         int index = 0;
-        while(sc.hasNext()){
-            if(current.size() == size){
+        while (sc.hasNext()) {
+            if (current.size() == size) {
                 break;
             }
-            
+
             Character next = sc.next().trim().charAt(0);
-            if(current.contains(next)){
+            if (current.contains(next)) {
                 int i = current.lastIndexOf(next);
-                current.subList(0,i+1).clear();
+                current.subList(0, i + 1).clear();
                 current.add(next);
-            }else{
+            } else {
                 current.add(next);
             }
             index++;
